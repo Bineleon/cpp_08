@@ -18,6 +18,36 @@ void printHeader(const std::string& str)
 
 int main(void)
 {
+	printHeader("Test : list");
+	
+	std::cout << SMYELLOW << "Creating list with int from 1 to 5..." << RESET << std::endl;
+	std::list<int> l;
+
+	for (int i = 1; i < 6; ++i)
+		l.push_back(i);
+
+	std::list<int>::iterator it;
+	try
+	{
+		it = easyfind(l, 5);
+		std::cout << "Value found : " << SMGREEN << *it << RESET << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << SMRED << e.what() << RESET << '\n';
+	}
+	
+	
+	try
+	{
+		it = easyfind(l, 6);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << SMRED << e.what() << RESET << '\n';
+	}
+	std::cout << std::endl;
+	printHeader("Test : vector");
 
 	return 0;
 }

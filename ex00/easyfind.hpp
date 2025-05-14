@@ -1,25 +1,34 @@
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
+#include "exceptions.hpp"
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include "exceptions.hpp"
+#include <list>
+#include <vector>
 
 template < typename T >
-int easyfind(T container, int toFind)
+typename T::iterator easyfind(T & container, int toFind)
 {
-	T it;
+	typename T::iterator it;
 
-	it = find(container.begin(), container.end(), toFind)
-	if (it != container.end())
-		return it;
-	else
+	it = find(container.begin(), container.end(), toFind);
+	if (it == container.end())
 		throw NotFoundException();
-
+	return it;
 }
 
+// template < typename T >
+// typename T::const_iterator easyfind(T & container, int toFind)
+// {
+// 	T::const_iterator it;
 
+// 	it = find(container.begin(), container.end(), toFind)
+// 	if (it == container.end())
+// 		throw NotFoundException();
+// 	return it;
+// }
 
 # define RESET "\033[0m"
 # define SMRED "\033[0;31m"

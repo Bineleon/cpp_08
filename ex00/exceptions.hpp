@@ -1,5 +1,5 @@
-#ifndef EASYFIND_HPP
-#define EASYFIND_HPP
+#ifndef EXCEPTIONS_HPP
+#define EXCEPTIONS_HPP
 
 #include <exception>
 
@@ -8,7 +8,7 @@ class NotFoundException: public std::exception
 	public:
 	virtual const char* what() const throw()
 	{
-		return "Element not found";
+		return "Value not found";
 	}
 };
 
