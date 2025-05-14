@@ -18,36 +18,69 @@ void printHeader(const std::string& str)
 
 int main(void)
 {
-	printHeader("Test : list");
+	{
+		printHeader("Test : list");
 	
-	std::cout << SMYELLOW << "Creating list with int from 1 to 5..." << RESET << std::endl;
-	std::list<int> l;
+		std::cout << SMYELLOW << "Creating list with int from 1 to 5..." << RESET << std::endl;
+		std::list<int> l;
+	
+		for (int i = 1; i < 6; ++i)
+			l.push_back(i);
+	
+		std::cout << SMYELLOW << "Trying to find 5 (should work)..." << RESET << std::endl;
+		std::list<int>::iterator it;
+		try
+		{
+			it = easyfind(l, 5);
+			std::cout << "Value found : " << SMGREEN << *it << RESET << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << SMRED << e.what() << RESET << '\n';
+		}
+		
+		std::cout << SMYELLOW << "Trying to find 6 (should not work)..." << RESET << std::endl;
+		try
+		{
+			it = easyfind(l, 6);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << SMRED << e.what() << RESET << '\n';
+		}
+	}
+	{
 
-	for (int i = 1; i < 6; ++i)
-		l.push_back(i);
-
-	std::list<int>::iterator it;
-	try
-	{
-		it = easyfind(l, 5);
-		std::cout << "Value found : " << SMGREEN << *it << RESET << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << SMRED << e.what() << RESET << '\n';
-	}
+		printHeader("Test : vector");
 	
+		std::cout << SMYELLOW << "Creating vector with int from 1 to 5..." << RESET << std::endl;
+		std::vector<int> v;
 	
-	try
-	{
-		it = easyfind(l, 6);
+		for (int i = 1; i < 6; ++i)
+			v.push_back(i);
+	
+		std::cout << SMYELLOW << "Trying to find 5 (should work)..." << RESET << std::endl;
+		std::vector<int>::iterator it;
+		try
+		{
+			it = easyfind(v, 5);
+			std::cout << "Value found : " << SMGREEN << *it << RESET << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << SMRED << e.what() << RESET << '\n';
+		}
+		
+		std::cout << SMYELLOW << "Trying to find 6 (should not work)..." << RESET << std::endl;
+		try
+		{
+			it = easyfind(v, 6);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << SMRED << e.what() << RESET << '\n';
+		}
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << SMRED << e.what() << RESET << '\n';
-	}
-	std::cout << std::endl;
-	printHeader("Test : vector");
 
 	return 0;
 }

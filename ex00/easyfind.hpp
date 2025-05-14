@@ -22,9 +22,9 @@ typename T::iterator easyfind(T & container, int toFind)
 // template < typename T >
 // typename T::const_iterator easyfind(T & container, int toFind)
 // {
-// 	T::const_iterator it;
+// 	typename T::const_iterator it;
 
-// 	it = find(container.begin(), container.end(), toFind)
+// 	it = find(container.begin(), container.end(), toFind);
 // 	if (it == container.end())
 // 		throw NotFoundException();
 // 	return it;
