@@ -3,24 +3,57 @@
 
 #include <iostream>
 #include <vector>
+#include <climits>
+#include <stdlib.h>
+#include <cstdlib>
+#include <ctime>
+#include <list>
 
 class Span
 {
 	public:
-		class SpanIsFullException: public std::exception
+		class ContainerIsFullException: public std::exception
 		{
 			public:
 			virtual const char* what() const throw()
 			{
-				return ("Span is already full");
+				return ("Container is already full");
 			}
 		};
+        class TooFewElementsException: public std::exception
+		{
+			public:
+			virtual const char* what() const throw()
+			{
+				return ("Too few elements in container");
+			}
+		};
+        class IntLimitsException: public std::exception
+		{
+			public:
+			virtual const char* what() const throw()
+			{
+				return ("Number is out of int bounds");
+			}
+		};
+        template <typename T>
+        void addRange(T begin, T end)
+        {
+            if (std::distance(begin, end) + _v.size() > _N)
+                throw ContainerIsFullException();
+            _v.insert(_v.end(), begin, end);
+        }
 		Span(unsigned int N);
 		Span(const Span& src);
 		Span& operator=(const Span& rhs);
 		~Span(void);
-		void addNumber(int & nb);
-	
+		void addNumber(int nb);
+        long long shortestSpan() const;
+        long long longestSpan() const;
+        int size() const;
+        std::vector<int> getV() const;
+
+
     private:
 		Span(void);
 		unsigned int _N;
