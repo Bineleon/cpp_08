@@ -64,7 +64,7 @@ long long Span::longestSpan() const
 
     std::vector<int> sortedV = _v;
     std::sort(sortedV.begin(), sortedV.end());
-    long long maxSpan = sortedV[sortedV.size() - 1] - sortedV[0];
+    long long maxSpan = sortedV.back() - sortedV.front();
 
     return maxSpan;
 }
