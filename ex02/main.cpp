@@ -92,8 +92,8 @@ int main()
 		std::cout << SMYELLOW << "Creating const reference from \"mstack\"..." << RESET << std::endl;
 		const MutantStack<int> &constMstack = mstack;
 
-		MutantStack<int>::const_iterator it = constMstack.cbegin();
-		MutantStack<int>::const_iterator ite = constMstack.cend();
+		MutantStack<int>::const_iterator it = constMstack.begin();
+		MutantStack<int>::const_iterator ite = constMstack.end();
 
 		std::cout << SMYELLOW << "Printing mstack elements through const_iterator..." << RESET << std::endl;
 		while (it != ite)
@@ -139,8 +139,8 @@ int main()
 		std::cout << SMYELLOW << "Creating const reference from \"mstack\"..." << RESET << std::endl;
 		const MutantStack<int> &constMstack = mstack;
 
-		MutantStack<int>::const_reverse_iterator it = constMstack.crbegin();
-		MutantStack<int>::const_reverse_iterator ite = constMstack.crend();
+		MutantStack<int>::const_reverse_iterator it = constMstack.rbegin();
+		MutantStack<int>::const_reverse_iterator ite = constMstack.rend();
 
 		std::cout << SMYELLOW << "Printing mstack elements through const_iterator..." << RESET << std::endl;
 		while (it != ite)
